@@ -1,0 +1,64 @@
+<script>
+app.directive('maxLength', function() {
+        return {
+            restrict: "A",
+            require: 'ngModel',
+            link: function (scope, element, attrs, controller) {
+                    attrs.$set("ngTrim", "false");
+                    var limitLength = parseInt(attrs.maxLength, 10);
+                    scope.$watch(attrs.ngModel, function(newValue) {
+                        if(controller.$viewValue.length > limitLength){
+                            var el = element[0];
+                            var start = el.selectionStart;
+                            var end = el.selectionEnd;
+                            var originalValue = controller.$viewValue;
+                            var formattedValue = originalValue.substring(0, limitLength);
+                            controller.$setViewValue( formattedValue );
+                            controller.$render();
+                            if(start === originalValue.length)
+                                el.setSelectionRange(formattedValue.length, formattedValue.length);
+                            else
+                                el.setSelectionRange(start, end);
+                        }
+                    });
+                }
+        };
+    });
+    hideDiv1(){
+        return true;
+    }  
+
+</script>
+<div *ngIf="evnt">
+  <br/>  
+  <div style="display:none">
+    <label>id: </label>{{evnt.id}}</div>
+  <div>
+    <label>Event Name: </label>
+    <input [(ngModel)]="evnt.name" class="input-small" type="string" maxLength="50" placeholder="name" required/>
+   </div>
+   <div>
+    <label>Event Date/Time: </label>
+    <input [(ngModel)]="evnt.eventdate" class="input-small" type="datetime-local" required/>
+   </div> 
+   <div> 
+    <label>Event Summary: </label><br/>
+    <textarea [(ngModel)]="evnt.summary" class="input-big" type="string" maxLength="500" placeholder="summary" required></textarea>
+   </div> 
+  <div>
+    <label>Event Description: </label><br/>
+    <textarea [(ngModel)]="evnt.description" class="input-big" type="string" maxLength="1000" placeholder="description"></textarea>
+   </div> 
+  <div>
+    <label>Image upload link: </label>
+    <input type="file" (change)="onChange($event)"/>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

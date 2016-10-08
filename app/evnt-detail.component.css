@@ -1,0 +1,74 @@
+div {
+   padding: 6px;
+}
+label {
+  display: inline-block;
+  width: 15em;
+  margin: .5em 0;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+}
+.input-small {
+    background-color: white;
+    color:black;
+    height: 2em;
+    width: 20em;
+    border: none;
+    border: 1px solid lightgray;
+    padding: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.input-big {
+    background-color: white;
+    color:black;
+    height: 5em;
+    width: 36em;
+    border: none;
+    /* box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 -1px 0 rgba(0,0,0,0.05) inset;*/
+    border: 1px solid lightgray;
+    /* border-color: #53ace4; */
+    padding: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.ng-invalid:not(.ng-pristine):not(.required-invalid) {
+    border: 1px solid #d93a3e;
+}
+input[required].ng-invalid {
+    border-right: 5px solid #d93a3e;
+}
+input[required]:not(.required-invalid),
+input[required].ng-invalid:not(.required-invalid) {
+    border-right: 5px solid #37ad79;
+}
+.error {
+    color: #d93a3e;
+}
+button {
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-small; 
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+button:hover {
+  background-color: lightblue;  /* #cfd8dc; */
+  border: 1px solid lightskyblue;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc; 
+  cursor: auto;
+}
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

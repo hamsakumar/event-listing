@@ -1,0 +1,47 @@
+<br /><br /><table cellpadding="20">
+<tr valign="top">
+<td> 
+  <evnt-search></evnt-search>
+</td>
+<td>
+  <button (click)="addEvnt()">Add New Event</button>
+  <div *ngIf="addingEvnt">
+    <my-evnt-detail (close)="close($event)"></my-evnt-detail>
+  </div>
+</td>
+</tr>
+</table>
+<div class="error" *ngIf="error">{{error}}</div>
+<ul class="evnts">
+  <li *ngFor="let evnt of evnts" (click)="onSelect(evnt)" [class.selected]="evnt === selectedEvnt">
+     <span class="evnt-datetime">
+      <span class="badge">{{evnt.eventdate | date:'MMMM dd yyyy hh:mm a'}}</span>     
+     <!-- <a id="link-3" ng-href="gotoDetail()">{{evnt.name}}</a><br />-->
+    </span> 
+    <br/>  
+    <span class="evnt-element">
+      <!--<span class="badge">{{evnt.id}}</span>--> 
+      {{evnt.name}}
+     <!-- <a id="link-3" ng-href="gotoDetail()">{{evnt.name}}</a><br />-->
+    </span>
+    <br /><br />
+    <span align="right">
+    <button class="button" (click)="deleteEvnt(evnt, $event)">Delete</button>
+    <button class="button" (click)="buyEvnt(evnt, $event)">Buy Ticket</button>
+    </span>
+  </li>
+</ul>
+<!--
+<div *ngIf="selectedEvnt">
+  <h2>
+    {{selectedEvnt.name | uppercase}} is my event
+  </h2>
+  <button (click)="gotoDetail()">Modify Event</button>
+</div>
+-->
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
